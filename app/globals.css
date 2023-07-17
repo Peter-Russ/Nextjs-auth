@@ -1,0 +1,23 @@
+:root {
+    --bg-color: #1f1f1f;
+    --hover-color: #3f3f3f;
+    --text-color: #f1f1f1;
+    --text-lg-color: #818181;
+    --blue-theme: #3ea6ff;
+    --mobile-nav-height: 50px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+*::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
