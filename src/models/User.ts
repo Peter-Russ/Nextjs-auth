@@ -6,8 +6,8 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
     trim: true,
-    minlength: 3,
-    maxlength: 30,
+    minlength: [3 , "Username must be at least 3 characters long"],
+    maxlength: [30, "Username can't be longer than 30 characters"],
   },
   email: {
     type: String,
@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
   hashedPassword: {
     type: String,
     required: true,
+    trim: true,
+    minlength: [6, "Password must be at least 6 characters long"],
+    maxlength: [40, "Password can't be longer than 30 characters"],
   },
   blocked: {
     type: Boolean,
