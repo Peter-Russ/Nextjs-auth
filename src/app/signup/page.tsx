@@ -1,19 +1,26 @@
 "use client";
-import styles from './loginPage.module.css'
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { IUser } from "@/src/interfaces/IUser";
 
-export default function loginPage() {
+export default function signupPage() {
     const [user, setUser] = useState<IUser>({} as IUser);
     
-    const onLogin = async () => {
+    const onSignup = async () => {
     }
 
     return (
         <div>
-            <h1>Login</h1>
+            <h1>Signup</h1>
+            
+            <label htmlFor="username"></label>
+            <input 
+            id="username" 
+            type="text"
+            onChange={(e) => setUser({...user, username: e.target.value})}
+            placeholder="Username"
+            />
 
             <label htmlFor="email"></label>
             <input 
@@ -31,11 +38,11 @@ export default function loginPage() {
             placeholder="********"
             />
 
-            <button onClick={onLogin}>
+            <button onClick={onSignup}>
                 Signup
             </button>
 
-            <Link href="/signup">Signup instead</Link>
+            <Link href="/login">Login instead</Link>
         </div>
     )
 }
