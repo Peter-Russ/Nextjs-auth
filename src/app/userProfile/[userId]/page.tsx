@@ -1,12 +1,15 @@
 
-interface params {
-    userId: string;
+interface Props {
+    params: {
+        videoId: string;
+    }
 }
 
-export default function userProfilePage(params: string) {
+export default function userProfilePage({params}: Props) {
     return (
         <div>
             <h1>User Profile</h1>
+            <p>{params.videoId}</p>
         </div>
     )
 }

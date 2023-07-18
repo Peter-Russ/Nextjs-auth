@@ -1,14 +1,47 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { IUser } from "@/src/interfaces/IUser";
+import { toast } from "react-hot-toast";
+import { NextResponse } from "next/server";
 
 export default function signupPage() {
     const [user, setUser] = useState<IUser>({} as IUser);
-    
+    const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false);
+    const router = useRouter();
+
     const onSignup = async () => {
+        try {
+            setLoading(true);
+
+            const response = await fetch("/api/user/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(user),
+            },);
+
+            router.push("/login");
+            
+        } catch (error: any) {
+            console.log("Signup failed", error.message)
+            toast.error(error.message);
+        } finally {
+            setLoading(false);
+        }
     }
+
+    useEffect(() => {
+        if (user.username.length < 0 || user.password.length < 0) {
+            setButtonDisabled(false);
+        } else {
+            setButtonDisabled(true);
+        }
+    }, [user]);
+    
 
     return (
         <div>
