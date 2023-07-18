@@ -14,7 +14,6 @@ export async function POST(request: NextRequest) {
 
     try {
         await connectToDB();
-
         const {username, email, password}: RequestBody = await request.json();
 
         const user = await User.findOne({ email: email });
@@ -31,12 +30,14 @@ export async function POST(request: NextRequest) {
             hashedPassword: hashedPassword,
         });
 
-        const savedUser = await newUser.save();
+        // await newUser.save().catch((err: any) => {return NextResponse.json({ error: err.message }, { status: 400 })});
+        await newUser.save().catch((err: any) => {console.log(err.message);});
+
 
         return NextResponse.json({
             message: "User created successfully",
             success: true,
-            savedUser,
+            newUser,
         })
 
     } catch (error: any) {

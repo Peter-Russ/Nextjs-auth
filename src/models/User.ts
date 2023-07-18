@@ -14,14 +14,12 @@ const userSchema = new mongoose.Schema({
     unique: true,
     trim: true,
     lowercase: true,
-    match: [/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/, "Please fill a valid email address"],
+    // match: [/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/, "Please fill a valid email address"],
   },
   hashedPassword: {
     type: String,
     required: true,
     trim: true,
-    minlength: [6, "Password must be at least 6 characters long"],
-    maxlength: [40, "Password can't be longer than 30 characters"],
   },
   role: {
     type: String,
@@ -44,7 +42,7 @@ const userSchema = new mongoose.Schema({
   forgotPasswordTokenExpires: Date,
   verificationToken: String,
   verificationTokenExpires: Date,
-  
+
 }, { timestamps: true, strictQuery: true }, 
 );
 

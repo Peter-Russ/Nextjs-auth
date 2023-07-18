@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { IUser } from "@/src/interfaces/IUser";
 import { toast } from "react-hot-toast";
-import { NextResponse } from "next/server";
+import axios from "axios";
 
 export default function signupPage() {
     const [user, setUser] = useState<IUser>({} as IUser);
@@ -16,13 +16,19 @@ export default function signupPage() {
         try {
             setLoading(true);
 
-            const response = await fetch("/api/user/signup", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(user),
-            },);
+            const response = await axios.post("/api/user/signup", user);
+
+            // const response:any = await fetch("/api/user/signup", {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify({
+            //         username: user.username,
+            //         email: user.email,
+            //         password: user.password,
+            //     }),
+            // },);
 
             router.push("/login");
             
@@ -34,13 +40,13 @@ export default function signupPage() {
         }
     }
 
-    useEffect(() => {
-        if (user.username.length < 0 || user.password.length < 0) {
-            setButtonDisabled(false);
-        } else {
-            setButtonDisabled(true);
-        }
-    }, [user]);
+    // useEffect(() => {
+    //     if (user.username.length < 0 || user.password.length < 0) {
+    //         setButtonDisabled(false);
+    //     } else {
+    //         setButtonDisabled(true);
+    //     }
+    // }, [user]);
     
 
     return (
