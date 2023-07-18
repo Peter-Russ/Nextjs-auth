@@ -17,19 +17,7 @@ export default function signupPage() {
             setLoading(true);
 
             const response = await axios.post("/api/user/signup", user);
-
-            // const response:any = await fetch("/api/user/signup", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify({
-            //         username: user.username,
-            //         email: user.email,
-            //         password: user.password,
-            //     }),
-            // },);
-
+            
             router.push("/login");
             
         } catch (error: any) {

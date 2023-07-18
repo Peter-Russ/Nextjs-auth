@@ -1,0 +1,10 @@
+.con {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background-color: var(--accent-color);
+    margin: 100px auto;
+    border: 1px solid var(--text-color);
+}
