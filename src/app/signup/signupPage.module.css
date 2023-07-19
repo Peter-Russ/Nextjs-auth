@@ -9,7 +9,7 @@
     border: 1px solid var(--accent-color);
     color: black;
     max-width: 350px;
-    height: 450px;
+    height: 500px;
 }
 
 .input {
@@ -28,7 +28,7 @@
     margin-bottom: 0.5rem;
 }
 
-.login {
+.signup {
     margin-top: 2rem;
     background-color: #290070;
     border: 1px solid var(--accent-color);
@@ -41,7 +41,7 @@
     letter-spacing: 0.05rem;
 }
 
-.signup {
+.login {
     margin-top: 1rem;
     background-color: #ffffff;
     border: 1px solid #290070;

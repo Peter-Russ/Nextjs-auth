@@ -30,9 +30,7 @@ export async function POST(request: NextRequest) {
             hashedPassword: hashedPassword,
         });
 
-        // await newUser.save().catch((err: any) => {return NextResponse.json({ error: err.message }, { status: 400 })});
-        await newUser.save().catch((err: any) => {console.log(err.message);});
-
+        await newUser.save().catch((err: any) => {return NextResponse.json({ error: err.message }, { status: 400 })});
 
         return NextResponse.json({
             message: "User created successfully",

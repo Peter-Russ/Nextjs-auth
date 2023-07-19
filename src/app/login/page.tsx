@@ -29,31 +29,37 @@ export default function loginPage() {
     }
 
     return (
-        <div className={styles.con}>
+        <div className={styles.column}>
             <h1>Login</h1>
 
-            <label htmlFor="email"></label>
+            <label htmlFor="email" className={styles.label}>Email</label>
             <input 
             id="email" 
             type="email"
             onChange={(e) => setUser({...user, email: e.target.value})}
-            placeholder="email"
+            placeholder="Email"
+            className={styles.input}
             />
 
-            <label htmlFor="password"></label>
+            <label htmlFor="password" className={styles.label}>Password</label>
             <input 
             id="password" 
             type="password"
             onChange={(e) => setUser({...user, password: e.target.value})}
-            placeholder="********"
+            placeholder="Password"
+            className={styles.input}
             />
 
-            <button onClick={onLogin}>
+            <button onClick={onLogin} className={styles.login}>
                 Login
             </button>
             <Toaster />
 
-            <Link href="/signup">Signup instead</Link>
+            <button className={styles.signup}>
+                <Link href="/signup" className={styles.link}>
+                    Signup
+                </Link>
+            </button>
         </div>
     )
 }

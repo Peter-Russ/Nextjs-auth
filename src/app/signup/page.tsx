@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { IUser } from "@/src/interfaces/IUser";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import styles from "./signupPage.module.css"
 
 export default function signupPage() {
     const [user, setUser] = useState<IUser>({} as IUser);
@@ -38,38 +39,43 @@ export default function signupPage() {
     
 
     return (
-        <div>
-            <h1>Signup</h1>
+        <div className={styles.column}>
+            <h1>Sign up</h1>
             
-            <label htmlFor="username"></label>
+            <label htmlFor="username" className={styles.label}>Name</label>
             <input 
             id="username" 
             type="text"
             onChange={(e) => setUser({...user, username: e.target.value})}
             placeholder="Username"
+            className={styles.input}
             />
 
-            <label htmlFor="email"></label>
+            <label htmlFor="email" className={styles.label}>Email</label>
             <input 
             id="email" 
             type="email"
             onChange={(e) => setUser({...user, email: e.target.value})}
-            placeholder="email"
+            placeholder="Email"
+            className={styles.input}
             />
 
-            <label htmlFor="password"></label>
+            <label htmlFor="password" className={styles.label}>Password</label>
             <input 
             id="password" 
             type="password"
             onChange={(e) => setUser({...user, password: e.target.value})}
-            placeholder="********"
+            placeholder="Password"
+            className={styles.input}
             />
 
-            <button onClick={onSignup}>
-                Signup
+            <button onClick={onSignup} className={styles.signup}>
+                Sign up
             </button>
 
-            <Link href="/login">Login instead</Link>
+            <button className={styles.login}>
+                <Link href="/login" className={styles.link}>Login</Link>
+            </button>
         </div>
     )
 }
