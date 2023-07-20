@@ -26,7 +26,6 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: "Invalid password" }, { status: 400 });
         }
 
-        console.log(user)
         //create token data
         const tokenData = {
             id: user._id,
@@ -35,8 +34,6 @@ export async function POST(request: NextRequest) {
         }
         //create token
         const jwtToken = await jwt.sign(tokenData, process.env.JWT_SECRET!, {expiresIn: "2h"})
-
-        console.log(jwtToken)
 
         const response = NextResponse.json({
             message: "Login successful",
